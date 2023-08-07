@@ -58,7 +58,21 @@ def get_picture_by_id(id):
 ######################################################################
 @app.route("/picture", methods=["POST"])
 def create_picture():
-    pass
+    new_picture = request.json
+   # print(new_picture["id"])
+    if not new_picture:
+        return {"Message": "Invalid data by client"},404
+    for idx in data:
+        # print(idx)
+        if idx["id"] is new_picture["id"]:
+            return {"Message": f"picture with id {new_picture['id']} already present"},302;
+    
+    try:
+        data.append(new_picture)   
+        return jsonify(new_picture),201
+    except NameError:
+        return {"message": "data not defined"}, 500
+         
 
 ######################################################################
 # UPDATE A PICTURE

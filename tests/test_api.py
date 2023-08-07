@@ -49,6 +49,8 @@ def test_post_picture(picture, client):
     res = client.post("/picture", data=json.dumps(picture),
                       content_type="application/json")
     assert res.status_code == 201
+   # print(picture['id'])
+   # print(res.json)
     assert res.json['id'] == picture['id']
     res = client.get("/count")
     assert res.status_code == 200

@@ -82,7 +82,7 @@ def create_picture():
 @app.route("/picture/<int:id>", methods=["PUT"])
 def update_picture(id):
     new_picture = request.json
-    print(new_picture['id'])
+    # print(new_picture['id'])
     if new_picture['id'] == 'id':
         for idx in range(len(data)):
             if(data['idx'].id == 'id'):

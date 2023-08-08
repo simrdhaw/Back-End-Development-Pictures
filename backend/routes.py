@@ -83,12 +83,12 @@ def create_picture():
 def update_picture(id):
     new_picture = request.json
     # print(new_picture['id'])
-    if new_picture['id'] == 'id':
+    if new_picture['id'] == id:
         for idx in range(len(data)):
-            if(data['idx'].id == 'id'):
-                data['idx'] = new_picture
+            if(data[idx]['id'] == id):
+                data[idx] = new_picture
         
-                return jsonify(data["id"]),200
+                return jsonify(new_picture),200
         
     return {"message": "picture not found"},404
         
@@ -104,6 +104,6 @@ def delete_picture(id):
         # print('id')
         if(data[idx]['id'] == id):
             # print(data[idx])
-            data.remove(data[idx])
+            data.pop(idx)
             return {"Message": "HTTP_204_NO_CONTENT"},204
     return {"message": "picture not found"},404
